@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://btnhsdeve2dpq"]
+[gd_scene load_steps=9 format=3 uid="uid://y5sitmajupif"]
 
 [ext_resource type="Texture2D" uid="uid://ch125mml2ytki" path="res://blocks/stone.png" id="1_0yq8u"]
-[ext_resource type="Material" uid="uid://ge3cupupfbml" path="res://block.tres" id="1_r18nw"]
+[ext_resource type="Script" path="res://block.gd" id="1_aeuv0"]
+[ext_resource type="Material" path="res://block.tres" id="1_r18nw"]
 [ext_resource type="Script" path="res://blocktexture.gd" id="2_h66rt"]
 [ext_resource type="Texture2D" uid="uid://bsxndbn1s8qa7" path="res://blocks/dirt.png" id="3_b3akb"]
+[ext_resource type="Script" path="res://blockcollision.gd" id="6_dlfi0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ujcn"]
 
@@ -11,6 +13,7 @@
 
 [node name="block" type="StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_aeuv0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_6ujcn")
@@ -23,3 +26,4 @@ dirt = ExtResource("3_b3akb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_auqg3")
+script = ExtResource("6_dlfi0")

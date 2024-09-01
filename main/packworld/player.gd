@@ -16,9 +16,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
 	if Input.is_action_pressed("move_back"):
-		direction.z += 1
+		position.z += 0.2
 	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
+		position.z -= 0.2
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_height
 	if direction != Vector3.ZERO:
