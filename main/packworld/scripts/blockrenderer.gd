@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends OccluderInstance3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,4 +8,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#var distance = abs($Player2.global_position - $"../MeshInstance3D".global_position)
+	#if (distance < 5):
+		#hide()
+	#else:
+		#show()
 	pass
