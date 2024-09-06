@@ -20,6 +20,5 @@ const blocks = {
 }
 	
 func getblocktexture(blockid):
-	var blocktexture = blocks.get(blockid)
-	var texture = blocktexture.texture
+	var texture = blocks.get(blockid).texture
 	return texture
