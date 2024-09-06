@@ -1,12 +1,25 @@
 extends Node
 
-var dirt = preload("res://assets/blocks/dirt.tres")
-var grass = preload("res://assets/blocks/grass.tres")
-var stone = preload("res://assets/blocks/stone.tres")
+#var dirt = preload("res://assets/blocks/dirt.tres")
+#var grass = preload("res://assets/blocks/grass.tres")
+#var stone = preload("res://assets/blocks/stone.tres")
 
-signal blockidsignal(blockid)
+const blocks = {
+	0: {
+		"name": "stone",
+		"texture": "res://assets/blocks/stone.tres"
+	},
+	1: {
+		"name": "dirt",
+		"texture": "res://assets/blocks/dirt.tres"
+	},
+	2: {
+		"name": "grass",
+		"texture": "res://assets/blocks/grass.tres"
+	}
+}
 
-var blockid = [dirt, grass, stone]
+#signal blockidsignal(blockid)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func getblockid():
-	
-	pass
+func getblocktexture(blockid):
+	var blocktexture = blocks.get(blockid)
+	var texture = blocktexture.texture
+	return texture

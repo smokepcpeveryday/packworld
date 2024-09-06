@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5aygtoiof25s"]
+[gd_scene load_steps=5 format=3 uid="uid://c5aygtoiof25s"]
 
-[ext_resource type="Script" path="res://scripts/block_list.gd" id="2_s4d5g"]
+[ext_resource type="Script" path="res://scripts/chunkgen.gd" id="1_fiewt"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_br1ia"]
 [ext_resource type="ArrayMesh" uid="uid://1pjj2sxx5td0" path="res://packboy.obj" id="3_1e6nt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_om2lo"]
@@ -9,30 +10,29 @@ height = 1.78734
 [node name="Spatial" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00927114, -2.38419e-07, -0.000219345)
 
-[node name="Player2" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9182, 128.743, 0)
+[node name="World" type="Node" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player2"]
+[node name="Player" type="CharacterBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44704, 93.9576, -0.000219345)
+script = ExtResource("2_br1ia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Player"]
 transform = Transform3D(0.861759, 0, 0, 0, 0.549259, 0, 0, 0, 0.67365, 0.0150757, -0.474048, 0)
 shape = SubResource("CylinderShape3D_om2lo")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Player2"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World/Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124222, -0.967911, 0.00309625)
 mesh = ExtResource("3_1e6nt")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Camera3D" type="Camera3D" parent="Player2"]
+[node name="Camera3D" type="Camera3D" parent="World/Player"]
 transform = Transform3D(0.980645, 0, -0.195792, 0, 1, 0, 0.195792, 0, 0.980645, -1.77026, -0.429414, 9.33811)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player2/Camera3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World/Player/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 0.772224, 0.635351, 0, -0.635351, 0.772224, 0, 3.31307, 0)
 light_color = Color(0.96753, 0.941344, 1, 1)
 
-[node name="Cursor" type="Node" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="World/Player/Camera3D"]
 
-[node name="GridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-cell_size = Vector3(1, 1, 1)
-
-[node name="BlockList" type="Node" parent="."]
-script = ExtResource("2_s4d5g")
+[node name="Chunk" type="Node3D" parent="World"]
+script = ExtResource("1_fiewt")
