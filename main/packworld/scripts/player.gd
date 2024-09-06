@@ -7,17 +7,25 @@ extends CharacterBody3D
 @export var jump_height = 4
 
 var target_velocity = Vector3.ZERO
+
+func _ready():
+	position.z = 0
+	pass
 	
 func _physics_process(delta):
+	print(position)
 	var direction = Vector3.ZERO
+	var zpos = position.z
 	if Input.is_action_pressed("move_right"):
 		direction.x += 1
 	if Input.is_action_pressed("move_left"):
 		direction.x -= 1
-	if Input.is_action_pressed("move_back"):
-		position.z += 0.2
-	if Input.is_action_pressed("move_forward"):
-		position.z -= 0.2
+	if Input.is_action_just_released("move_back"):
+		if zpos <= 1:
+			position.z += 1
+	if Input.is_action_just_released("move_forward"):
+		if zpos >= 1:
+			position.z -= 1
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_height
 	if direction != Vector3.ZERO:

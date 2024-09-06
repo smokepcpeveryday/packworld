@@ -7,7 +7,7 @@ extends StaticBody3D
 func _ready() -> void:
 	var blockmesh = $blockmesh
 	blockmesh.block_texture(block_id)
-	print(block_id)
+	#print(block_id)
 	pass # Replace with function body.
 
 

@@ -1,9 +1,5 @@
 extends MeshInstance3D
 
-#@export var mat:StandardMaterial3D
-#@export var stone:Texture2D
-#@export var dirt:Texture2D
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
