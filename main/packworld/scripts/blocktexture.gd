@@ -9,5 +9,5 @@ func _process(delta: float) -> void:
 	pass
 
 func block_texture(blockid):
-	var blocktexture:StandardMaterial3D = load(BlockList.getblocktexture(blockid))
+	var blocktexture:StandardMaterial3D = load(BlockList.blocktexture(blockid))
 	set_surface_override_material(0, blocktexture)

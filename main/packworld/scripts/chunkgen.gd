@@ -1,16 +1,9 @@
 extends Node3D
 # Called when the node enters the scene tree for the first time.
 signal blocktextureidsignal(blockid)
-var block = preload("res://assets/blocks/block.tscn")
 
 func _ready():
 	genchunk(64)
-	pass
-	
-func _process(delta: float) -> void:
-	#var playerpos = $Player.position
-	#var playerchunk = round(playerpos/16)
-	#print(playerchunk)
 	pass
 
 func genchunk(chunkrange):
@@ -25,17 +18,7 @@ func genchunk(chunkrange):
 				var o_noise = noise.get_noise_3d(x, y, z)*100
 				if y >= 6:
 					if o_noise > 0.09:
-						inst(Vector3(x,y,z), 1)
+						BlockList.inst(Vector3(x,y,z), "dirt")
 				if y < 6:
 					if o_noise > 0.09:
-						inst(Vector3(x,y,z), 0)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func inst(pos, blockid):
-#	instantiate block
-	var blockinstance = block.instantiate()
-	#	send pos to block
-	blockinstance.position = pos
-	#	send texture to blocktexture
-	blockinstance.block_id = blockid
-	add_child(blockinstance)
+						BlockList.inst(Vector3(x,y,z), "stone")

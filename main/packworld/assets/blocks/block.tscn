@@ -12,7 +12,6 @@
 [node name="block" type="StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_25124")
-block_id = 1
 
 [node name="blockmesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_6ujcn")

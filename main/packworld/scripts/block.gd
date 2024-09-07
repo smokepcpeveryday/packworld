@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var block_id:int
+@export var block_id:String
 
 
 # Called when the node enters the scene tree for the first time.
