@@ -18,7 +18,7 @@ func genchunk(chunkrange):
 				var o_noise = noise.get_noise_3d(x, y, z)*100
 				if y >= 6:
 					if o_noise > 0.09:
-						BlockList.inst(Vector3(x,y,z), "dirt")
+						BlockReg.inst(Vector3(x,y,z), "dirt")
 				if y < 6:
 					if o_noise > 0.09:
-						BlockList.inst(Vector3(x,y,z), "stone")
+						BlockReg.inst(Vector3(x,y,z), "stone")

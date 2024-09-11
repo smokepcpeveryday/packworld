@@ -5,7 +5,8 @@ extends CharacterBody3D
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 7
 @export var jump_height = 4
-
+@onready var inv = $inv
+var targetblock:Vector3
 var target_velocity = Vector3.ZERO
 
 func _ready():
@@ -13,7 +14,7 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	print(position)
+	#print(position)
 	var direction = Vector3.ZERO
 	var zpos = position.z
 	if Input.is_action_pressed("move_right"):
@@ -26,6 +27,13 @@ func _physics_process(delta):
 	if Input.is_action_just_released("move_forward"):
 		if zpos >= 1:
 			position.z -= 1
+	if Input.is_action_just_pressed("click_right"):
+		var m_pos = get_viewport().get_mouse_position()
+		var camera = get_node("camera")
+		#rayOrigin = camera.project
+		#print(m_pos)
+		#var block = BlockList.block
+		#BlockList.inst(Vector3(m_pos), "stone")
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		target_velocity.y = jump_height
 	if direction != Vector3.ZERO:

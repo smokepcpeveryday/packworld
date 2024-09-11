@@ -12,12 +12,14 @@ config_version=5
 
 config/name="packworld"
 run/main_scene="res://spatial.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-BlockList="*res://scripts/blocklist.gd"
+BlockReg="*res://scripts/blockreg.gd"
+ItemReg="*res://scripts/itemreg.gd"
+Global="*res://scripts/global.gd"
 
 [display]
 
@@ -26,6 +28,10 @@ mouse_cursor/custom_image="res://assets/mouse.png"
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[global_group]
+
+player=""
 
 [input]
 
